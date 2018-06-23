@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include "stdafx.h"
 #include <cstdio>
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-//конструктор
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 baggage::baggage()
 {
 	Surname = "";
@@ -33,39 +33,39 @@ baggage::baggage(string name)
 	Weight = 0;
 }
 
-//изменение структуры
+//РёР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 baggage baggage::ChangeBaggage(baggage &res)
 {
-	cout << "Какое поле вы хотите изменить?" << endl;
-	cout << "1 - Фамилия пассажира" << endl;
-	cout << "2 - Номер рейса" << endl;
-	cout << "3 - Дата вылета" << endl;
-	cout << "4 - Пункт назначения" << endl;
-	cout << "5 - Количество мест багажа" << endl;
-	cout << "6 - Вес багажа" << endl;
-	cout << "0 - Отмена" << endl;
+	cout << "РљР°РєРѕРµ РїРѕР»Рµ РІС‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ?" << endl;
+	cout << "1 - Р¤Р°РјРёР»РёСЏ РїР°СЃСЃР°Р¶РёСЂР°" << endl;
+	cout << "2 - РќРѕРјРµСЂ СЂРµР№СЃР°" << endl;
+	cout << "3 - Р”Р°С‚Р° РІС‹Р»РµС‚Р°" << endl;
+	cout << "4 - РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ" << endl;
+	cout << "5 - РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚ Р±Р°РіР°Р¶Р°" << endl;
+	cout << "6 - Р’РµСЃ Р±Р°РіР°Р¶Р°" << endl;
+	cout << "0 - РћС‚РјРµРЅР°" << endl;
 	int num = InputNumber(0, 6, "");
 	MyDate d;
 	switch (num)
 	{
 	case 1:
-		res.SetSurname(InputInformation("Введите фамилию пассажира: "));
+		res.SetSurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ РїР°СЃСЃР°Р¶РёСЂР°: "));
 		break;
 	case 2:
-		res.SetFlightNum(InputNumber(0, 100, "Введите номер рейса (0 - 100): "));
+		res.SetFlightNum(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЂРµР№СЃР° (0 - 100): "));
 		break;
 	case 3:
 		d.InputDate();
 		res.SetDepDate(d.ToString());
 		break;
 	case 4:
-		res.SetDestination(InputInformation("Введите пункт назначения: "));
+		res.SetDestination(InputInformation("Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: "));
 		break;
 	case 5:
-		res.SetNumPieces(InputNumber(0, 200, "Введите количество мест для багажа (0 -200): "));
+		res.SetNumPieces(InputNumber(0, 200, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚ РґР»СЏ Р±Р°РіР°Р¶Р° (0 -200): "));
 		break;
 	case 6:
-		res.SetWeight(InputNumber(0, 100, "Введите вес багажа (0 - 100): "));
+		res.SetWeight(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РІРµСЃ Р±Р°РіР°Р¶Р° (0 - 100): "));
 		break;
 	default:
 		exit(0);
@@ -74,14 +74,14 @@ baggage baggage::ChangeBaggage(baggage &res)
 	return res;
 }
 
-//переопределение оператора сравнения
+//РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° СЃСЂР°РІРЅРµРЅРёСЏ
 bool baggage::operator== (baggage b)
 {
 	return ((Surname == b.GetSurname()) && (FlightNum == b.GetFlightNum()) && (DepDate == b.GetDepDate()) &&
 		(Destination == b.GetDestination()) && (NumPieces == b.GetNumPieces()) && (Weight == b.GetWeight()));
 }
 
-//запись структуры в бинарный файл
+//Р·Р°РїРёСЃСЊ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void baggage::BagToBinFile(fstream *file)
 {
 	StrToBin(file, this->Surname);
@@ -92,7 +92,7 @@ void baggage::BagToBinFile(fstream *file)
 	file->write(reinterpret_cast<char*>(&(this->Weight)), sizeof(this->Weight));
 }
 
-//считывание структуры из бинарного файла
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 baggage BagFromBinFile(fstream *file, bool &ok)
 {
 	baggage b;
@@ -112,37 +112,37 @@ baggage BagFromBinFile(fstream *file, bool &ok)
 	return b;
 }
 
-//ввод с консоли
+//РІРІРѕРґ СЃ РєРѕРЅСЃРѕР»Рё
 baggage InputBaggage()
 {
 	baggage b;
-	b.SetSurname(InputInformation("Введите фамилию пассажира: "));
-	b.SetFlightNum(InputNumber(0, 100, "Введите номер рейса (0 - 100): "));
+	b.SetSurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ РїР°СЃСЃР°Р¶РёСЂР°: "));
+	b.SetFlightNum(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЂРµР№СЃР° (0 - 100): "));
 	MyDate d;
 	d.InputDate();
 	b.SetDepDate(d.ToString());
-	b.SetDestination(InputInformation("Введите пункт назначения: "));
-	b.SetNumPieces(InputNumber(0, 200, "Введите количество мест для багажа (0 - 200): "));
-	b.SetWeight(InputNumber(0, 100, "Введите вес багажа (0 - 100): "));
+	b.SetDestination(InputInformation("Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: "));
+	b.SetNumPieces(InputNumber(0, 200, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚ РґР»СЏ Р±Р°РіР°Р¶Р° (0 - 200): "));
+	b.SetWeight(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РІРµСЃ Р±Р°РіР°Р¶Р° (0 - 100): "));
 	return b;
 }
 
-//ввод с консоли в режиме "Владелец"
+//РІРІРѕРґ СЃ РєРѕРЅСЃРѕР»Рё РІ СЂРµР¶РёРјРµ "Р’Р»Р°РґРµР»РµС†"
 baggage InputOwnerBaggage(string name, _int32 nump)
 {
 	baggage b;
 	b.SetSurname(name);
-	b.SetFlightNum(InputNumber(0, 100, "Введите номер рейса (0 - 100): "));
+	b.SetFlightNum(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЂРµР№СЃР° (0 - 100): "));
 	MyDate d;
 	d.InputDate();
 	b.SetDepDate(d.ToString());
-	b.SetDestination(InputInformation("Введите пункт назначения: "));
+	b.SetDestination(InputInformation("Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: "));
 	b.SetNumPieces(nump);
-	b.SetWeight(InputNumber(0, 100, "Введите вес багажа (0 - 100): "));
+	b.SetWeight(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РІРµСЃ Р±Р°РіР°Р¶Р° (0 - 100): "));
 	return b;
 }
 
-//вывод на консоль
+//РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputBaggage(baggage b)
 {
 	cout << setw(1) << left << "|" << setw(15) << left << b.GetSurname() << "|" 
@@ -151,23 +151,23 @@ void OutputBaggage(baggage b)
 		b.GetNumPieces() << "|" << setw(10) << left << b.GetWeight() << "|";
 }
 
-//перевод структуры в строку
+//РїРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ СЃС‚СЂРѕРєСѓ
 string ToString(baggage b, _int32 i)
 {
-	string result = "Запись № " + to_string(i) + "\n" + "Фамилия пассажира: " + b.GetSurname() + "\n" + "Номер рейса: " + to_string(b.GetFlightNum()) + "\n" + "Дата вылета: " + b.GetDepDate() + "\n" +
-		"Пункт назначения: " + b.GetDestination() + "\n" + "Количество мест багажа: " + to_string(b.GetNumPieces()) + "\n" +
-		"Вес багажа: " + to_string(b.GetWeight()) + "\n";
+	string result = "Р—Р°РїРёСЃСЊ в„– " + to_string(i) + "\n" + "Р¤Р°РјРёР»РёСЏ РїР°СЃСЃР°Р¶РёСЂР°: " + b.GetSurname() + "\n" + "РќРѕРјРµСЂ СЂРµР№СЃР°: " + to_string(b.GetFlightNum()) + "\n" + "Р”Р°С‚Р° РІС‹Р»РµС‚Р°: " + b.GetDepDate() + "\n" +
+		"РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: " + b.GetDestination() + "\n" + "РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚ Р±Р°РіР°Р¶Р°: " + to_string(b.GetNumPieces()) + "\n" +
+		"Р’РµСЃ Р±Р°РіР°Р¶Р°: " + to_string(b.GetWeight()) + "\n";
 	return result;
 }
 
-//проверака на равенство
+//РїСЂРѕРІРµСЂР°РєР° РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
 /*bool IsEqual(baggage b1, baggage b2)
 {
 	return ((b1.GetSurname() == b2.GetSurname()) && (b1.GetFlightNum() == b2.GetFlightNum()) && (b1.GetDepDate() == b2.GetDepDate()) &&
 		(b1.GetDestination() == b2.GetDestination()) && (b1.GetNumPieces() == b2.GetNumPieces()) && (b1.GetWeight() == b2.GetWeight()));
 }*/
 
-//считываение структуры из строки
+//СЃС‡РёС‚С‹РІР°РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· СЃС‚СЂРѕРєРё
 baggage ReadFromString(ifstream& input)
 {
 	baggage result;
@@ -181,52 +181,52 @@ baggage ReadFromString(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Фамилия пассажира: ";
+			string wrd = "Р¤Р°РјРёР»РёСЏ РїР°СЃСЃР°Р¶РёСЂР°: ";
 			result.SetSurname(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Номер рейса: ";
+			string wrd = "РќРѕРјРµСЂ СЂРµР№СЃР°: ";
 			result.SetFlightNum(atoi(s.substr(wrd.length(), s.length()).c_str()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Дата вылета: ";
+			string wrd = "Р”Р°С‚Р° РІС‹Р»РµС‚Р°: ";
 			result.SetDepDate(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Пункт назначения: ";
+			string wrd = "РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: ";
 			result.SetDestination(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Количество мест багажа: ";
+			string wrd = "РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃС‚ Р±Р°РіР°Р¶Р°: ";
 			result.SetNumPieces(atoi(s.substr(wrd.length(), s.length()).c_str()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Вес багажа: ";
+			string wrd = "Р’РµСЃ Р±Р°РіР°Р¶Р°: ";
 			result.SetWeight(atoi(s.substr(wrd.length(), s.length()).c_str()));
 		}
 	}
 	catch (...)
 	{
-		cout << "Ошибка записи в файл!" << endl;
+		cout << "РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ С„Р°Р№Р»!" << endl;
 	}
 	return result;
 }
 
-/*поиск по критериям
-1 - фамилия
-2 - дата вылета
-3 - пункт назначения
-4 - вес багажа*/
+/*РїРѕРёСЃРє РїРѕ РєСЂРёС‚РµСЂРёСЏРј
+1 - С„Р°РјРёР»РёСЏ
+2 - РґР°С‚Р° РІС‹Р»РµС‚Р°
+3 - РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ
+4 - РІРµСЃ Р±Р°РіР°Р¶Р°*/
 bool SearchInfo(baggage b1, baggage b2, _int32 type_search)
 {
 	switch (type_search)
@@ -244,11 +244,11 @@ bool SearchInfo(baggage b1, baggage b2, _int32 type_search)
 	}
 }
 
-/*ввод критерия поиска
-1 - фамилия
-2 - дата вылета
-3 - пункт назначения
-4 - вес багажа*/
+/*РІРІРѕРґ РєСЂРёС‚РµСЂРёСЏ РїРѕРёСЃРєР°
+1 - С„Р°РјРёР»РёСЏ
+2 - РґР°С‚Р° РІС‹Р»РµС‚Р°
+3 - РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ
+4 - РІРµСЃ Р±Р°РіР°Р¶Р°*/
 baggage InputForSearchInfo(_int32 type_search)
 {
 	baggage bag;
@@ -256,28 +256,28 @@ baggage InputForSearchInfo(_int32 type_search)
 	switch (type_search)
 	{
 	case 1:
-		bag.SetSurname(InputInformation("Введите фамилию: "));
+		bag.SetSurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "));
 		return bag;
 	case 2:
 		d.InputDate();
 		bag.SetDepDate(d.ToString());
 		return bag;
 	case 3:
-		bag.SetDestination(InputInformation("Введите пункт назначения: "));
+		bag.SetDestination(InputInformation("Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: "));
 		return bag;
 	case 4:
-		bag.SetWeight(InputNumber(0, 100, "Введите вес багажа (0 - 100): "));
+		bag.SetWeight(InputNumber(0, 100, "Р’РІРµРґРёС‚Рµ РІРµСЃ Р±Р°РіР°Р¶Р° (0 - 100): "));
 	default:
 		return bag;
 	}
 }
 
-/*сравнение структур по заданному полю
-1 - фамилия
-2 - дата вылета
-3 - пункт назначения
-4 - вес багажа*/
-_int32 Сomparison(baggage b1, baggage b2, _int32 type_search)
+/*СЃСЂР°РІРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ РїРѕР»СЋ
+1 - С„Р°РјРёР»РёСЏ
+2 - РґР°С‚Р° РІС‹Р»РµС‚Р°
+3 - РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ
+4 - РІРµСЃ Р±Р°РіР°Р¶Р°*/
+_int32 РЎomparison(baggage b1, baggage b2, _int32 type_search)
 {
 	switch (type_search)
 	{

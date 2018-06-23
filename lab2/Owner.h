@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "stdafx.h"
 #include <cstdio>
 #include <sstream>
@@ -10,10 +10,10 @@
 class Owner
 {
 private:
-	string OwnerSurname; //фамилия владельца багажа
-	_int32 NumOfBag; //количество багажа
+	string OwnerSurname; //С„Р°РјРёР»РёСЏ РІР»Р°РґРµР»СЊС†Р° Р±Р°РіР°Р¶Р°
+	_int32 NumOfBag; //РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р°
 public:
-	//свойства доступа
+	//СЃРІРѕР№СЃС‚РІР° РґРѕСЃС‚СѓРїР°
 	string GetOwnerSurname()
 	{
 		return OwnerSurname;
@@ -34,33 +34,33 @@ public:
 		return NumOfBag = value;
 	}
 
-	//конструктор
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	Owner();
 
-	//изменение структуры
+	//РёР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 	Owner ChangeOwner(Owner &res);
 
-	//перегруженный оператор присваивания
+	//РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	Owner& operator = (Owner ow);
 
-	//запись структуры в бинарный файл
+	//Р·Р°РїРёСЃСЊ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 	void OwnerToBinFile(fstream *file);
 };
 
-//считывание структуры из бинарного файла
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 Owner OwnerFromBinFile(fstream *file, bool &ok);
 
-//ввод с консоли
+//РІРІРѕРґ СЃ РєРѕРЅСЃРѕР»Рё
 Owner InputOwner();
 
-//вывод на консоль
+//РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputOwner(Owner ow);
 
-//перевод структуры в строку
+//РїРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ СЃС‚СЂРѕРєСѓ
 string ToString(Owner ow, _int32 i);
 
-//проверака на равенство
+//РїСЂРѕРІРµСЂР°РєР° РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
 bool IsEqual(Owner ow1, Owner ow2);
 
-//считывание структуры из строки
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· СЃС‚СЂРѕРєРё
 Owner ReadFromStringOwner(ifstream& input);

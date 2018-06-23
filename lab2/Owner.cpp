@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include "stdafx.h"
 #include <cstdio>
@@ -12,28 +12,28 @@
 
 using namespace std;
 
-//конструктор
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 Owner::Owner()
 {
 	OwnerSurname = "";
 	NumOfBag = 0;
 }
 
-//изменение структуры
+//РёР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹
 Owner Owner::ChangeOwner(Owner &res)
 {
-	cout << "Какое поле вы хотите изменить?" << endl;
-	cout << "1 - Фамилия" << endl;
-	cout << "2 - Количество багажа" << endl;
-	cout << "0 - Отмена" << endl;
+	cout << "РљР°РєРѕРµ РїРѕР»Рµ РІС‹ С…РѕС‚РёС‚Рµ РёР·РјРµРЅРёС‚СЊ?" << endl;
+	cout << "1 - Р¤Р°РјРёР»РёСЏ" << endl;
+	cout << "2 - РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р°" << endl;
+	cout << "0 - РћС‚РјРµРЅР°" << endl;
 	_int32 num = InputNumber(0, 2, "");
 	switch (num)
 	{
 	case 1:
-		res.SetOwnerSurname(InputInformation("Введите фамилию: "));
+		res.SetOwnerSurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "));
 		break;
 	case 2:
-		res.SetNumOfBag(InputNumber(0, 300, "Введите количество багажа (0 - 200): "));
+		res.SetNumOfBag(InputNumber(0, 300, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р° (0 - 200): "));
 		break;
 	default:
 		exit(0);
@@ -42,7 +42,7 @@ Owner Owner::ChangeOwner(Owner &res)
 	return res;
 }
 
-//перегруженный оператор присваивания
+//РїРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 Owner& Owner::operator = (Owner ow)
 {
 	OwnerSurname = ow.GetOwnerSurname();
@@ -50,14 +50,14 @@ Owner& Owner::operator = (Owner ow)
 	return (*this);
 }
 
-//запись структуры в бинарный файл
+//Р·Р°РїРёСЃСЊ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void Owner::OwnerToBinFile(fstream * file)
 {
 	StrToBin(file, this->OwnerSurname);
 	file->write(reinterpret_cast<char*>(&(this->NumOfBag)), sizeof(this->NumOfBag));
 }
 
-//считывание структуры из бинарного файла
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 Owner OwnerFromBinFile(fstream *file, bool &ok)
 {
 	Owner ow;
@@ -68,36 +68,36 @@ Owner OwnerFromBinFile(fstream *file, bool &ok)
 	return ow;
 }
 
-//ввод с консоли
+//РІРІРѕРґ СЃ РєРѕРЅСЃРѕР»Рё
 Owner InputOwner()
 {
 	Owner ow;
-	ow.SetOwnerSurname(InputInformation("Введите фамилию: "));
-	ow.SetNumOfBag(InputNumber(0, 200, "Введите количество багажа (0 - 200): "));
+	ow.SetOwnerSurname(InputInformation("Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "));
+	ow.SetNumOfBag(InputNumber(0, 200, "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р° (0 - 200): "));
 	return ow;
 }
 
-//вывод на консоль
+//РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ
 void OutputOwner(Owner ow)
 {
 	cout << setw(1) << left << "|" << setw(7) << left << ow.GetOwnerSurname() << "|" << setw(10) << left << ow.GetNumOfBag() << "|";
 }
 
-//перевод структуры в строку
+//РїРµСЂРµРІРѕРґ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІ СЃС‚СЂРѕРєСѓ
 string ToString(Owner ow, _int32 i)
 {
-	string res = "Запись № " + to_string(i) + "\n" + "Фамилия: " + ow.GetOwnerSurname() + "\n" + "Количество багажа: " + to_string(ow.GetNumOfBag()) + "\n";
+	string res = "Р—Р°РїРёСЃСЊ в„– " + to_string(i) + "\n" + "Р¤Р°РјРёР»РёСЏ: " + ow.GetOwnerSurname() + "\n" + "РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р°: " + to_string(ow.GetNumOfBag()) + "\n";
 	return res;
 }
 
-//проверака на равенство
+//РїСЂРѕРІРµСЂР°РєР° РЅР° СЂР°РІРµРЅСЃС‚РІРѕ
 bool IsEqual(Owner ow1, Owner ow2)
 {
 	return ((ow1.GetOwnerSurname() == ow2.GetOwnerSurname()) &&
 		(ow1.GetNumOfBag() == ow2.GetNumOfBag()));
 }
 
-//считывание структуры из строки
+//СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РёР· СЃС‚СЂРѕРєРё
 Owner ReadFromStringOwner(ifstream& input)
 {
 	Owner res;
@@ -107,19 +107,19 @@ Owner ReadFromStringOwner(ifstream& input)
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Фамилия: ";
+			string wrd = "Р¤Р°РјРёР»РёСЏ: ";
 			res.SetOwnerSurname(s.substr(wrd.length(), s.length()));
 		}
 		if (!input.eof())
 		{
 			getline(input, s, '\n');
-			string wrd = "Количество багажа: ";
+			string wrd = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РіР°Р¶Р°: ";
 			res.SetNumOfBag(atoi(s.substr(wrd.length(), s.length()).c_str()));
 		}
 	}
 	catch (...)
 	{
-		cout << "Ошибка!" << endl;
+		cout << "РћС€РёР±РєР°!" << endl;
 	}
 	return res;
 }

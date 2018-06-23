@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include "stdafx.h"
 #include <stdio.h>
 #include <math.h>
@@ -18,13 +18,13 @@ using namespace std;
 Task<baggage> Bag;
 Task<Owner> Owners;
 
-//сохранение багажа в бинарный файл
+//СЃРѕС…СЂР°РЅРµРЅРёРµ Р±Р°РіР°Р¶Р° РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void SaveBagToBinFile(string FileName, Task<baggage> bag)
 {
 	fstream file;
 	file.open(FileName, ios::out | ios::binary);
 	if (!file.is_open())
-		throw("Файл не открыт!");
+		throw("Р¤Р°Р№Р» РЅРµ РѕС‚РєСЂС‹С‚!");
 	_int32 i;
 	for (i = 0; i < bag.size(); i++)
 	{
@@ -33,13 +33,13 @@ void SaveBagToBinFile(string FileName, Task<baggage> bag)
 	file.close();
 }
 
-//сохранение владельцев багажа в бинарный файл
+//СЃРѕС…СЂР°РЅРµРЅРёРµ РІР»Р°РґРµР»СЊС†РµРІ Р±Р°РіР°Р¶Р° РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
 void SaveOwnersToBinFile(string FileName, Task<Owner> owners)
 {
 	fstream file;
 	file.open(FileName, ios::out | ios::binary);
 	if (!file.is_open())
-		throw("Файл не открыт!");
+		throw("Р¤Р°Р№Р» РЅРµ РѕС‚РєСЂС‹С‚!");
 	_int32 i;
 	for (i = 0; i < owners.size(); i++)
 	{
@@ -48,14 +48,14 @@ void SaveOwnersToBinFile(string FileName, Task<Owner> owners)
 	file.close();
 }
 
-//загрузка багажа из бинарного файла
+//Р·Р°РіСЂСѓР·РєР° Р±Р°РіР°Р¶Р° РёР· Р±РёРЅР°СЂРЅРѕРіРѕ С„Р°Р№Р»Р°
 void LoadBagFromBinFile(string FileName, Task<baggage> &bag)
 {
 	fstream file;
 	file.open(FileName, ios::binary | ios::in);
 	if (!file.is_open())
 		return;
-		//throw("Не удалось загрузить данные!");
+		//throw("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РґР°РЅРЅС‹Рµ!");
 	bool ok;
 	while (!file.eof())
 	{
@@ -66,14 +66,14 @@ void LoadBagFromBinFile(string FileName, Task<baggage> &bag)
 	file.close();
 }
 
-//загрузка владельцев из файла
+//Р·Р°РіСЂСѓР·РєР° РІР»Р°РґРµР»СЊС†РµРІ РёР· С„Р°Р№Р»Р°
 void LoadOwnersFromBinFile(string FileName, Task<Owner> &owners)
 {
 	fstream file;
 	file.open(FileName, ios::binary | ios::in);
 	if (!file.is_open())
 		return;
-		//throw("Не удалось загрузить данные!")
+		//throw("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РґР°РЅРЅС‹Рµ!")
 	bool ok;
 	while (!file.eof())
 	{
@@ -84,33 +84,33 @@ void LoadOwnersFromBinFile(string FileName, Task<Owner> &owners)
 	file.close();
 }
 
-//главное меню программы
+//РіР»Р°РІРЅРѕРµ РјРµРЅСЋ РїСЂРѕРіСЂР°РјРјС‹
 _int32 MainMenu()
 {
-	cout << "Аэропорт «Домодедово»" << endl;
-	cout << "Войти как:" << endl;
-	cout << "1 - Владелец багажа" << endl;
-	cout << "2 - Администратор" << endl;
-	cout << "0 - Выход" << endl;
-	return InputNumber(0, 2, "Ваш выбор: ");
+	cout << "РђСЌСЂРѕРїРѕСЂС‚ В«Р”РѕРјРѕРґРµРґРѕРІРѕВ»" << endl;
+	cout << "Р’РѕР№С‚Рё РєР°Рє:" << endl;
+	cout << "1 - Р’Р»Р°РґРµР»РµС† Р±Р°РіР°Р¶Р°" << endl;
+	cout << "2 - РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ" << endl;
+	cout << "0 - Р’С‹С…РѕРґ" << endl;
+	return InputNumber(0, 2, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 	cout << endl;
 }
 
-//меню в режиме "Владелец багажа"
+//РјРµРЅСЋ РІ СЂРµР¶РёРјРµ "Р’Р»Р°РґРµР»РµС† Р±Р°РіР°Р¶Р°"
 _int32 MenuForOwners()
 {
 	cout << endl;
-	cout << "Режим «Владелец багажа»" << endl;
-	cout << "Выберете номер:" << endl;
+	cout << "Р РµР¶РёРј В«Р’Р»Р°РґРµР»РµС† Р±Р°РіР°Р¶Р°В»" << endl;
+	cout << "Р’С‹Р±РµСЂРµС‚Рµ РЅРѕРјРµСЂ:" << endl;
 	cout << endl;
 	PrintHeadOwners();
 	Owners.OutputScreenOw(Owners.GetVect(), OutputOwner);
 	cout << endl;
-	cout << "0 - Назад" << endl;
-	return InputNumber(0, Owners.size(), "Ваш выбор: ");
+	cout << "0 - РќР°Р·Р°Рґ" << endl;
+	return InputNumber(0, Owners.size(), "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 }
 
-//меню доступных действий для владельца багажа
+//РјРµРЅСЋ РґРѕСЃС‚СѓРїРЅС‹С… РґРµР№СЃС‚РІРёР№ РґР»СЏ РІР»Р°РґРµР»СЊС†Р° Р±Р°РіР°Р¶Р°
 _int32 MenuOwners(_int32 i)
 {
 	cout << endl;
@@ -119,39 +119,39 @@ _int32 MenuOwners(_int32 i)
 	tmp.push_back(Owners.GetVect()[i - 1]);
 	Owners.OutputScreenOw(tmp, OutputOwner);
 	cout << endl;
-	cout << "Доступные действия" << endl;
-	cout << "1 - Добавить новый багаж" << endl;
-	cout << "2 - Посмотреть данные о своем багаже" << endl;
-	cout << "0 - Назад" << endl;
-	return InputNumber(0, 2, "Ваш выбор: ");
+	cout << "Р”РѕСЃС‚СѓРїРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ" << endl;
+	cout << "1 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ Р±Р°РіР°Р¶" << endl;
+	cout << "2 - РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЃРІРѕРµРј Р±Р°РіР°Р¶Рµ" << endl;
+	cout << "0 - РќР°Р·Р°Рґ" << endl;
+	return InputNumber(0, 2, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 }
 
-//главное меню для режима «Администратор»
+//РіР»Р°РІРЅРѕРµ РјРµРЅСЋ РґР»СЏ СЂРµР¶РёРјР° В«РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂВ»
 _int32 MenuForAdmin()
 {
 	cout << endl;
-	cout << "Режим «Администратор»" << endl;
-	cout << "Доступные действия" << endl;
-	cout << "1 - Редактирование багажа" << endl;
-	cout << "2 - Просмотр информации о всём багаже" << endl;
-	cout << "3 - Редактирование информации о владельцах багажа" << endl;
-	cout << "0 - Назад" << endl;
-	return InputNumber(0, 3, "Ваш выбор: ");
+	cout << "Р РµР¶РёРј В«РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂВ»" << endl;
+	cout << "Р”РѕСЃС‚СѓРїРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ" << endl;
+	cout << "1 - Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РіР°Р¶Р°" << endl;
+	cout << "2 - РџСЂРѕСЃРјРѕС‚СЂ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІСЃС‘Рј Р±Р°РіР°Р¶Рµ" << endl;
+	cout << "3 - Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІР»Р°РґРµР»СЊС†Р°С… Р±Р°РіР°Р¶Р°" << endl;
+	cout << "0 - РќР°Р·Р°Рґ" << endl;
+	return InputNumber(0, 3, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 }
 
-//меню для редактирования багажа администратором
+//РјРµРЅСЋ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±Р°РіР°Р¶Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј
 _int32 MenuAdminEditBag()
 {
 	cout << endl;
-	cout << "Доступные изменения:" << endl;
-	cout << "1 - Добавить багаж" << endl;
-	cout << "2 - Выдать багаж" << endl;
-	cout << "3 - Изменить информацию" << endl;
-	cout << "0 - Отмена" << endl;
-	return InputNumber(0, 3, "Ваш выбор: ");
+	cout << "Р”РѕСЃС‚СѓРїРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ:" << endl;
+	cout << "1 - Р”РѕР±Р°РІРёС‚СЊ Р±Р°РіР°Р¶" << endl;
+	cout << "2 - Р’С‹РґР°С‚СЊ Р±Р°РіР°Р¶" << endl;
+	cout << "3 - РР·РјРµРЅРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ" << endl;
+	cout << "0 - РћС‚РјРµРЅР°" << endl;
+	return InputNumber(0, 3, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 }
 
-//редактирование багажа администратором
+//СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РіР°Р¶Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј
 void AdminEditBag()
 {
 	baggage bag;
@@ -162,41 +162,41 @@ void AdminEditBag()
 	{
 	case 1:
 		Bag.Add(InputBaggage());
-		cout << "Информация о багаже добавлена." << endl;
+		cout << "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р±Р°РіР°Р¶Рµ РґРѕР±Р°РІР»РµРЅР°." << endl;
 		break;
 	case 2:
 		PrintHeadBag();
 		Bag.OutputScreenBag(Bag.GetVect(), OutputBaggage);
-		Bag.Remove(InputNumber(1, Bag.size(), "Введите номер багажа, который необходимо выдать: "));
-		cout << "Багаж выдан." << endl;
+		Bag.Remove(InputNumber(1, Bag.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р±Р°РіР°Р¶Р°, РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РґР°С‚СЊ: "));
+		cout << "Р‘Р°РіР°Р¶ РІС‹РґР°РЅ." << endl;
 		break;
 	case 3:
 		PrintHeadBag();
 		Bag.OutputScreenBag(Bag.GetVect(), OutputBaggage);
-		n = (InputNumber(1, Bag.size(), "Введите номер багажа, информацию о котором необходимо изменить: "));
+		n = (InputNumber(1, Bag.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р±Р°РіР°Р¶Р°, РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕС‚РѕСЂРѕРј РЅРµРѕР±С…РѕРґРёРјРѕ РёР·РјРµРЅРёС‚СЊ: "));
 		subset = Bag.GetVect();
 		subset[n - 1] = bag.ChangeBaggage(Bag.GetVect()[n - 1]);
 		Bag.SetVect(subset)[n - 1];
-		cout << "Информация о багаже изменена." << endl;
+		cout << "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р±Р°РіР°Р¶Рµ РёР·РјРµРЅРµРЅР°." << endl;
 		break;
 	default:
 		break;
 	}
 }
 
-//меню для редактирования владельца багажа администратором
+//РјРµРЅСЋ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РІР»Р°РґРµР»СЊС†Р° Р±Р°РіР°Р¶Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј
 _int32 MenuAdminEditOwner()
 {
 	cout << endl;
-	cout << "Доступные изменения:" << endl;
-	cout << "1 - Добавить владельца" << endl;
-	cout << "2 - Удалить владельца" << endl;
-	cout << "3 - Изменить информацию о владельце" << endl;
-	cout << "0 - Отмена" << endl;
-	return InputNumber(0, 3, "Ваш выбор: ");
+	cout << "Р”РѕСЃС‚СѓРїРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ:" << endl;
+	cout << "1 - Р”РѕР±Р°РІРёС‚СЊ РІР»Р°РґРµР»СЊС†Р°" << endl;
+	cout << "2 - РЈРґР°Р»РёС‚СЊ РІР»Р°РґРµР»СЊС†Р°" << endl;
+	cout << "3 - РР·РјРµРЅРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РІР»Р°РґРµР»СЊС†Рµ" << endl;
+	cout << "0 - РћС‚РјРµРЅР°" << endl;
+	return InputNumber(0, 3, "Р’Р°С€ РІС‹Р±РѕСЂ: ");
 }
 
-//редактирование владельца багажа администратором
+//СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РІР»Р°РґРµР»СЊС†Р° Р±Р°РіР°Р¶Р° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј
 void AdminEditOwner()
 {
 	Owner ow;
@@ -207,22 +207,22 @@ void AdminEditOwner()
 	{
 	case 1:
 		Owners.Add(InputOwner());
-		cout << "Информация о владельце багажа добавлена." << endl;
+		cout << "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІР»Р°РґРµР»СЊС†Рµ Р±Р°РіР°Р¶Р° РґРѕР±Р°РІР»РµРЅР°." << endl;
 		break;
 	case 2:
 		PrintHeadOwners();
 		Owners.OutputScreenOw(Owners.GetVect(), OutputOwner);
-		Owners.Remove(InputNumber(1, Owners.size(), "Введите номер владельца, которого необходимо удалить: "));
-		cout << "Владелец удалён." << endl;
+		Owners.Remove(InputNumber(1, Owners.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІР»Р°РґРµР»СЊС†Р°, РєРѕС‚РѕСЂРѕРіРѕ РЅРµРѕР±С…РѕРґРёРјРѕ СѓРґР°Р»РёС‚СЊ: "));
+		cout << "Р’Р»Р°РґРµР»РµС† СѓРґР°Р»С‘РЅ." << endl;
 		break;
 	case 3:
 		PrintHeadOwners();
 		Owners.OutputScreenOw(Owners.GetVect(), OutputOwner);
-		n = (InputNumber(1, Bag.size(), "Введите номер владельца, информацию о котором необходимо изменить: "));
+		n = (InputNumber(1, Bag.size(), "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РІР»Р°РґРµР»СЊС†Р°, РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕС‚РѕСЂРѕРј РЅРµРѕР±С…РѕРґРёРјРѕ РёР·РјРµРЅРёС‚СЊ: "));
 		owset = Owners.GetVect();
 		owset[n - 1] = ow.ChangeOwner(Owners.GetVect()[n - 1]);
 		Owners.SetVect(owset)[n - 1];
-		cout << "Информация о владельце багажа изменена." << endl;
+		cout << "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІР»Р°РґРµР»СЊС†Рµ Р±Р°РіР°Р¶Р° РёР·РјРµРЅРµРЅР°." << endl;
 		break;
 	default:
 		break;
@@ -264,7 +264,7 @@ _int32 main()
 						//PrintHeadBag();
 						//bag = InputForSearchInfo(1);
 						/*if (bag.GetSurname() != Owners.GetVect()[i - 1].GetOwnerSurname())
-							cout << "Вы ввели не свою фамилию!" << endl;
+							cout << "Р’С‹ РІРІРµР»Рё РЅРµ СЃРІРѕСЋ С„Р°РјРёР»РёСЋ!" << endl;
 						else*/
 						{
 						baggage bag1(Owners.GetVect()[i - 1].GetOwnerSurname());
@@ -280,7 +280,7 @@ _int32 main()
 								}
 							}
 							else
-								cout << "Элементы не найдены" << endl;
+								cout << "Р­Р»РµРјРµРЅС‚С‹ РЅРµ РЅР°Р№РґРµРЅС‹" << endl;
 							break;
 						}
 					default:
